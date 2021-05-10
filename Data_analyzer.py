@@ -10,6 +10,7 @@ import os
 #Chrome driver options
 options = webdriver.ChromeOptions() 
 download_dir = "/home/kuba/MyProjects/VaccinesNews/VaccinesNews/Our_world_daily_reports"
+options.add_argument('headless')
 options.add_experimental_option("prefs", {"download.default_directory": download_dir})
 
 report_scrapper = DailyReportScrapper(options)
@@ -22,7 +23,6 @@ download_button_xpath = "/html[@class='js']/body[@class='StandaloneGrapherOrExpl
 report_scrapper.download_data(download_tab_xpath=download_tab_xpath, download_button_xpath=download_button_xpath)
 
 current_filename = download_dir + '/share-people-vaccinated-covid.csv'
-print(current_filename)
 report_scrapper.adjust_filename(old_filename=current_filename)
 
 
